@@ -1,7 +1,10 @@
 from loguru import logger
 
+from parser import Parser
+
 
 def main():
+
     logger.add('file log',
                format='{time:YYYY-MM-DD at HH:mm:ss} | {level} | {message}',
                rotation="3 days",
@@ -10,7 +13,8 @@ def main():
 
     title = input("Введите название новеллы: ")
     url = input("Введите ссылку на новеллу: ")
-    logger.info(f"Пользователь ввел название {title} новеллы и ссылку {url}.")
+    pars = Parser(title, url)
+    pars.get_novel()
 
 
 if __name__ == '__main__':
